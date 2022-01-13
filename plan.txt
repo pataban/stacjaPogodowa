@@ -1,0 +1,52 @@
+
+Sensor
+	miezy temperatura, wilgotnosc, cisnienie 
+	wysyla info w okreslonym interwale
+	Po uruchomieniu pyta o 
+		id uzywane do weryfikacji
+		interwal czasu co ktory wykonac pomiar
+		adres ip	//mozna pominac
+		port	//mozna pominac
+	dane przesyla w jako dictionary w o kluczach
+		"id":	123
+		"temp": 123.45
+		"hum": 12.34
+		"press": 1023.00
+		"date": datetime.datetime.now().strftime("%d.%m.%Y %H:%M:%S")
+	przycisk powoduje przeslanie danych w danym momencie
+	Komunikacja REST request post do "IP:Port/dataCollection"
+		requests.post("IP:Port/dataCollection",dane jako python dict)
+	problemy
+		alarm		narazie pomijane	
+			problematyczne przy komunikacji REST
+			mozna np request get po wykonaniu pomiaru
+		szyfrowanie		narazie pomijane
+	
+
+Server
+	DB sqlLite za pomoca sqlalchemy bo latwy do realizacji
+	dane w psotaci takiej jak w requestach 
+		te same klucze
+	requesty obslugiwane za pomoca flask
+		adres /dataCollection
+	przechowuje dane o dozwolonych urzadzeniach (id) w osobnej tabeli
+	brak kontroli danych bo to duzo pisania daremnego
+
+UI
+	menu tekstowe w terminalu  w postaci:
+		Menu:
+		1. cos do wykonania 
+		2. cos do wykonania 
+		Twoj wybor: 
+	mozna dodac ewentualnie opcje logowania
+	
+
+Architektura:	//mozna pominac bo to tylko dla wygody
+	maszyny ustawione jako bridged adapter 
+		zeby latwo testowac z naszego uzadzenia
+		mozna pisac na remote w VS CODE
+	serwer proponuje adres 192.168.100.50	
+		czy tobie taki pasuje?(ja musze miec min 192.168.100.25)
+
+
+
