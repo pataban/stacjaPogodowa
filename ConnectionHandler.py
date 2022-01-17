@@ -9,7 +9,7 @@ class ConnectionHandler():
         self.topicRecieve=topicRecieve
 
         def on_message(client, userdata, message):
-            print("recData")
+            #print("recData")
             message=str(message.payload.decode("utf-8"))
             data=json.loads(message)
             onRecieve(data)
