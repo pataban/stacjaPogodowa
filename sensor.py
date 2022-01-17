@@ -17,7 +17,7 @@ def getTime():
 
 
 def makeData():#pomiar danych, zwracany w tej postaci   #TODO
-    data={"id":123456789,
+    data={"sensorId":123456789,
         "temp":20.5,
         "hum":66.40,
         "press":1023.1,
