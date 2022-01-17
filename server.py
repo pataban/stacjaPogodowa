@@ -10,9 +10,6 @@ port = 1833
 serverId="000"
 topicSend = "action"
 topicRecieve = "sensorData"
-data={"action":"measurement",
-    "sensorId":123456789}   
-    #dla None dotyczy karzdy sensor #ewentualne dodatkowe klucze, wartosci
 dbEngine,sensors,weather=None,None,None
 
 
@@ -161,9 +158,14 @@ def menuDane():
         printData(getData(date=input("Podaj okres: ")))
     return menu()
 
-def menuAlarm():
-    pass#conn.send(data)
-
+def menuAlarm():        #TODO set alarm UI
+    #menu
+    data={"action":"setAlarm",
+    "sensorId":123456789}   #dla None dotyczy karzdy sensor 
+    #dodatkowe klucze, wartosci w celu ustalenia kiedy alarm
+    conn.send(data)
+    
+    
 
 if __name__ == '__main__':
     dbEngine,sensors,weather=openDB()

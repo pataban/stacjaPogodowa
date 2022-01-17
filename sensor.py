@@ -16,7 +16,7 @@ def getTime():
     return datetime.datetime.now().strftime("%d.%m.%Y %H:%M:%S")
 
 
-def makeData():#pomiar danych, zwracany w tej postaci   #TODO
+def makeData():       #TODO pomiar danych, zwracany w tej postaci 
     data={"sensorId":123456789,
         "temp":20.5,
         "hum":66.40,
@@ -25,14 +25,14 @@ def makeData():#pomiar danych, zwracany w tej postaci   #TODO
     return data
 
 
-def onRecieve(data):    #TODO   wykonanie polecenia nadanego przez serwer
+def onRecieve(data):    #TODO wykonanie polecenia nadanego przez serwer (ustawienie alarmu)
     print(f"rec: {data}")
 
 
 if __name__ == '__main__':
     conn=ConnectionHandler(sensorId,addr,port,topicSend,topicRecieve,onRecieve)
 
-    while(True):
+    while(True):    #TODO przesylanie danych za pomoca przyciska zamiast czekania na kolejny interwal
         data=makeData()
         conn.send(data)
         time.sleep(interval)
