@@ -158,12 +158,21 @@ def menuDane():
         printData(getData(date=input("Podaj okres: ")))
     return menu()
 
-def menuAlarm():        #TODO set alarm UI
+def menuAlarm():
     #menu
-    data={"action":"setAlarm",
-    "sensorId":123456789}   #dla None dotyczy karzdy sensor 
-    #dodatkowe klucze, wartosci w celu ustalenia kiedy alarm
-    conn.send(data)
+    id=str(input("Id sensora: "))
+    min=float(input("Dolna granica: "))
+    max=float(input("Górna granica: "))
+    if max <= min:
+        print("Niepoprawne granice")
+        return menuAlarm()
+    else:
+        data={"action":"setAlarm",
+        "sensorId":id,  #w przypadku pustego dotyczy każdego sensora
+        "tempMin":min,
+        "tempMax":max}
+        conn.send(data)
+        return menu()
     
     
 
