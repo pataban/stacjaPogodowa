@@ -86,7 +86,7 @@ def verifySensor(sensorId):
 
 
 def onRecieve(data):    #uruchamiany asynchronicznie na innym watku
-    print(f"rec: {data}")
+    #print(f"rec: {data}")
     
     if(not verifySensor(data["sensorId"])):
         print("User not valid")

@@ -52,9 +52,11 @@ def makeData4():
 
 
 def onRecieve(data):
+    global tempMax
+    global tempMin
     print(f"rec: {data}")
-    if data.get('action' == "setAlarm"):
-        if data.get('sendorId') == sensorId or data.get('sendorId') == "":
+    if data.get('action') == "setAlarm":
+        if data.get('sensorId') == sensorId or data.get('sensorId') == "":
             tempMax = data.get('tempMax')
             tempMin = data.get('tempMin')
 
